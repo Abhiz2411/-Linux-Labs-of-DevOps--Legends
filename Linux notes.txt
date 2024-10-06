@@ -1,0 +1,93 @@
+### Linux notes ###
+
+## Directory/File access
+-->
+	3 types of files in linux:
+	
+	A] Regular files: Hold data | eg. .txt, .exe, .py | Denoted by: -
+	
+	B] Directories: Organize files and other directories | Folders like eg. Games, Music | Denoted by: d 
+	
+	C] Symlinks: Provide references to other files or directories, serving as pointers that can simplify 
+				navigation or link across filesystems | Like Shortcut in windows eg. .aws, .azure |
+				Denoted by: l
+	-------------------------------------------------------------------------------------------------
+	Q. Command to get all the information about the directory/file in linux?
+	--> ll						// Long listing
+								// ls : Short listing
+								
+		ll -a 					// long listing with hidden files
+	-------------------------------------------------------------------------------------------------	
+	
+	## Components of long listing(ll):                 				//IMP
+
+	abhi@DESKTOP-RM3E0GT:~/DevOps$ ll
+	total 20
+	drwxr-xr-x  5 abhi abhi 4096 Aug 22 21:03 ./
+	drwxr-x--- 11 abhi abhi 4096 Aug 22 23:44 ../
+	drwxr-xr-x  2 abhi abhi 4096 Aug 14 02:42 keys/
+	drwxr-xr-x  2 abhi abhi 4096 Aug 22 21:47 shell_scripts/
+	drwxr-xr-x  2 abhi abhi 4096 Aug 14 04:31 static-website-project/ 
+	-->
+	1) `total 20`: Total size (in blocks) of all the files and directories listed in the current directory
+				   1 block = 512 bytes
+				   
+	2) `drwxr-xr-x`: 
+			i> `d`: Inidicates it is a directory
+			ii> `rwxr-xr-x`: Permissions of the directory
+				a} rwx(Frst 3 chars): The owner (abhi) has read (r), write (w), and execute (x) permissions.
+				b} r-x(Second 3 chars): The group (abhi) has read(r) and execute(x) permissions only. No write
+				c} r-x(Last 3 chars): Everyone else have read(r) and execute(x) permissions only. No write
+				
+		In short:											// IMP
+		- : Regular file
+		d : Directory
+		l : Symlink
+		r : read permission
+		w : write permission
+		x : execute permission
+		
+	3) `5` : Number of hard links to current directory.
+			 Basically it counts number of directories/files which are directly linked to current directory/file
+			 
+			 Understanding the Hard Links Count (5 in this case):
+			 i> Current Directory (.): Every directory has a link to itself, represented by .
+									   This counts as one link.
+			 ii>Parent Directory (..): Every directory also has a link to its parent directory, represented by ... 
+			                           This counts as another link.
+			 iii>Subdirectories: Each subdirectory within the directory also contains a link back to its parent 
+			                     directory (the directory in question). Each of these links adds to the count.
+
+			 So, for the 5 hard links in your example:
+			 1 link for . (the directory itself).
+			 1 link for .. (the parent directory).
+			 3 additional links represent three subdirectories within this directory, each of which has a .. 
+			 entry pointing back to this directory.
+			 
+			NOTE: 
+			1] Every directory has link for itself and its parent directory including root directory
+			2] Subdirectories subdirectories are not counted in number of hard link count
+			3] Only directories(d) and files(-) are counted in number of hard link count
+			4] Symlink files are not counted in number of hard link count
+			
+	4) `abhi` (first occurrence): This is the owner of the directory.
+
+	5) `abhi` (second occurrence): This is the group that owns the directory.
+
+	6) `4096` : Size of directory in bytes. 
+				Most directories use 4096 bytes (4 KB) for their structure.
+				
+	7) `Aug 22 21:03` : This is the last modification date and time of the directory.
+
+	8) `./` : This represents the current directory.
+	
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+### OCTAL value equivalent of repositroy/file permissions				// IMP
+--> 
+	1) read 	= r = 4
+	2) write 	= w = 2
+	3) execute 	= x = 1
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
