@@ -1,6 +1,8 @@
 
 # 🐧 Linux Labs of DevOps Legends 🛠️
 
+![Preview](./Module%202%20Linux%20fundamentals%20for%20DevOps.gif)
+
 Welcome, fearless explorer, to the **Linux-Labs-of-DevOps-Legends**! 🌟 Buckle up, because you're about to dive into the glamorous, non-stop thrill ride of creating users, directories, and *oh-so-exciting* permission settings on an EC2 Ubuntu instance. I know, it sounds like a party, right? 🎉
 
 But wait, there’s more! This magical repo includes:
